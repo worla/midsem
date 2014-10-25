@@ -1,0 +1,75 @@
+<html lang= "en-us">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../driver/jquery-mobile/jquery.mobile-1.4.4.css">
+
+	<script type="text/javascript", src="jquery.min.js"></script>
+	<script type="text/javascript" src="../driver/jquery-mobile/jquery.mobile-1.4.4.js"></script>
+	
+<script type="text/javascript">
+
+
+function syncAjax(u){
+		console.log(u); 
+        var obj=$.ajax(
+          {url:u,
+           async:false
+           }
+        );
+        return $.parseJSON(obj.responseText);
+        return console.log(obj.responseText);
+        
+      }
+</script>	
+</head>
+<body>
+<script>
+function getList(){
+	var u="http://50.63.128.135/~csashesi/class2015/winfred-adrah?cmd=1";
+	r=syncAjax(u);
+	var x = 1;
+	for(var i=0;i<r.users.length;i++){
+	var list = "Name: " + r.users[i].name + " " + "email: " + r.users[i].email_address + " " + "phone_number: " + r.users[1].phone_number;
+
+	$('<table><ul><li>' + list +'</li></ul></table></br>').appendTo('#list');
+	
+
+	}
+	}
+</script>
+	
+
+	<div data-role="page" id="pageone">
+	
+		<div data-role="header">
+		  <div data-role="navbar">
+		    <ul>
+		      <li><a href="#anylink" data-icon="search">Home</a></li>
+		      <li><a href="#anylink" data-icon="search">Page Two</a></li>
+		      <li><a href="#anylink" data-icon="search">Search</a></li>
+		    </ul>
+		  </div>
+		</div>	
+		
+	<div role="main" class="ui-content" align = "center">
+<!-- 
+	
+	<div><h2 onclick='getList()'>Tap Me To View Current Reserved Seat Users</h2></div>
+	<div data-role = "collapsible-set" id='list'>
+	</div> -->
+
+	<h3 onclick ='getList()' align="center">something</h3>
+	<button onclick = 'getList()' id = "displaylist">View</button>
+	<div id = "list" data-role="collapsible-set"></div>
+
+
+	
+			<div data-role="footer">	
+				<h1>Insert	Footer	Text	Here</h1>	
+		</div>	
+		
+</div>		
+</div>
+</body>
+</html>
